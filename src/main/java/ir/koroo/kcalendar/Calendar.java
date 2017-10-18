@@ -226,9 +226,10 @@ public abstract class Calendar extends PositionalAstronomy implements ICalendar 
     /// <param name="date">A String containing a date format to convert. yyyy/MM/dd</param>
     /// <param name="calendarType">a instance of calendar that date String based on it</param>
     /// <returns>Calendar equivalent to the  date contained in date.</returns>
-    public static ICalendar parse(String date, ICalendar ICalendarType) throws Exception {
+    public static ICalendar parse(String date,Class<? extends ICalendar> calendarType) throws Exception {
         if (date == null) throw new InvalidParameterException();
-        if (ICalendarType == null) throw new InvalidParameterException();
+        ICalendar calendar = calendarType.newInstance();
+        if (calendar == null) throw new InvalidParameterException();
         date = date.toLowerCase().trim();
         if (date.length() < 6) {
             throw new Exception("Format of String is not a date format!");
@@ -240,15 +241,15 @@ public abstract class Calendar extends PositionalAstronomy implements ICalendar 
                 .replace("_", "/")
                 .split("/");
         if (tmp[2].length() > tmp[0].length()) {
-            ICalendarType.setYear(Integer.parseInt(tmp[2]));
-            ICalendarType.setMonth(ICalendarType.getMonthInfo(Integer.parseInt(tmp[1])));
-            ICalendarType.setDay(Integer.parseInt(tmp[0]));
+            calendar.setYear(Integer.parseInt(tmp[2]));
+            calendar.setMonth(calendar.getMonthInfo(Integer.parseInt(tmp[1])));
+            calendar.setDay(Integer.parseInt(tmp[0]));
         } else {
-            ICalendarType.setYear(Integer.parseInt(tmp[0]));
-            ICalendarType.setMonth(ICalendarType.getMonthInfo(Integer.parseInt(tmp[1])));
-            ICalendarType.setDay(Integer.parseInt(tmp[2]));
+            calendar.setYear(Integer.parseInt(tmp[0]));
+            calendar.setMonth(calendar.getMonthInfo(Integer.parseInt(tmp[1])));
+            calendar.setDay(Integer.parseInt(tmp[2]));
         }
-        return ICalendarType;
+        return calendar;
     }
 
     @Override
