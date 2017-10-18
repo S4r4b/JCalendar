@@ -97,6 +97,56 @@ Or using other methods written for this purpose.
 
     parseFromPattern
 
+toString Method :
+-----------------
+Way 1 :
+
+**persian date**
+
+    persianDate.toString(DateFormat.FullDate);// پنجشنبه 23 آذر 1396
+    persianDate.toString(DateFormat.LongDate); // پنجشنبه 23 آذر
+    persianDate.toString(DateFormat.Date);// 1396/09/23
+    persianDate.toString(DateFormat.ShortDate);// 09/23
+
+**Islamic date**
+
+    islamicDate.toString(DateFormat.FullDate);//الخمیس‬ ٢٥ ربيع الاول ١٤٣٩
+    islamicDate.toString(DateFormat.LongDate); // الخميس ٢٥ ربيع الاول
+    islamicDate.toString(DateFormat.Date);// ۱۴۳۹/۰۳/۲۵ 
+    islamicDate.toString(DateFormat.ShortDate);// ۰۳/۲۵
+
+**Or custom Pattern**
+
+    d        Represents the day of the month as a number from 1 through 31. A single-digit day is formatted without a leading zero
+    dd        Represents the day of the month as a number from 01 through 31. A single-digit day is formatted with a leading zero
+    ddd        Represents the abbreviated name of the day of the week (Mon, Tues, Wed etc)
+    dddd        Represents the full name of the day of the week (Monday, Tuesday etc)
+    h        12-hour clock hour (e.g. 7)
+    hh        12-hour clock, with a leading 0 (e.g. 07)
+    H        24-hour clock hour (e.g. 19)
+    HH        24-hour clock hour, with a leading 0 (e.g. 19)
+    m        Minutes
+    mm        Minutes with a leading zero
+    M        Month number
+    MM        Month number with leading zero
+    MMM        Abbreviated Month Name (e.g. Dec)
+    MMMM        Full month name (e.g. December)
+    s        Seconds
+    ss        Seconds with leading zero
+    t        Abbreviated AM / PM (e.g. A or P)
+    y        Year, no leading zero (e.g. 2001 would be 1)
+    yy        Year, leadin zero (e.g. 2001 would be 01)
+    yyy        Year, (e.g. 2001 would be 2001)
+    yyyy        Year, (e.g. 2001 would be 2001)
+    f        Represents the most significant digit of the seconds fraction; that is, it represents the tenths of a second in a date and time value.
+    ff        Represents the two most significant digits of the seconds fraction; that is, it represents the hundredths of a second in a date and time value.
+    fff        Represents the three most significant digits of the seconds fraction; that is, it represents the milliseconds in a date and time value.
+
+For example :
+
+    persianDate.toString("yyyy/MM/dd");// 1396/09/23
+
+
 Custom Leap Algorithm
 ---------------------
 You can write for each type of your own `Leap Algorithm` and use that algorithm, and you can also write for each one a specific `Culture`.
@@ -133,3 +183,4 @@ Each 2820 year great grand cycle contains 2137 normal years of 365 days and 683 
 Acknowledgment
 --------------
 [Fourmilab calendar documentation](https://www.fourmilab.ch/documents/calendar/)
+
